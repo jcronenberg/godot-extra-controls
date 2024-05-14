@@ -41,8 +41,8 @@ func add_int(key : StringName, value : int = 0, minvalue : int = -2147483648, ma
 func add_float(key : StringName, value : float = 0.0, minvalue : float = -99999900000.0, maxvalue : float = 99999900000.0, step : float = 0.0001):
 	var editor = SpinBox.new()
 	var is_slider = minvalue > -2147483648 && maxvalue < 2147483648
-	editor.value = value
 	editor.step = step
+	editor.value = value
 	editor.min_value = minvalue
 	editor.max_value = maxvalue
 	_add_property_editor(key, editor, editor.value_changed, _on_number_changed)
