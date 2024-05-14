@@ -137,7 +137,7 @@ func end_group():
 func get_all() -> Dictionary:
 	var result = {}
 	for x in _keys:
-		result[x.key] = get_value_at(x.value)
+		result[x] = get_value_at(_keys[x])
 
 	return result
 
