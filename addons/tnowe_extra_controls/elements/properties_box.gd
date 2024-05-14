@@ -10,6 +10,15 @@ signal bool_changed(key : StringName, new_value : bool)
 
 const UnfoldedOptionButton := preload("res://addons/tnowe_extra_controls/elements/unfolded_option_button.gd")
 
+## Size flag horizontal for all labels
+@export var label_size_flags_horizontal: SizeFlags = SIZE_EXPAND_FILL
+## Minimum size for all labels
+@export var label_min_size: Vector2
+## Size flag horizontal for all editors
+@export var editor_size_flags_horizontal: SizeFlags = SIZE_EXPAND_FILL
+## Minimum size for all editors
+@export var editor_min_size: Vector2
+
 @export var _group_indent := 8.0
 
 var _keys := {}
@@ -209,8 +218,10 @@ func _add_property_editor(key : StringName, editor : Control, editor_signal : Si
 	label.text = key
 	label.clip_text = true
 	label.size_flags_vertical = 0
-	label.size_flags_horizontal = SIZE_EXPAND_FILL
-	editor.size_flags_horizontal = SIZE_EXPAND_FILL
+	label.size_flags_horizontal = label_size_flags_horizontal
+	label.custom_minimum_size = label_min_size
+	editor.size_flags_horizontal = editor_size_flags_horizontal
+	editor.custom_minimum_size = editor_min_size
 
 	box.add_child(label)
 	box.add_child(editor)
