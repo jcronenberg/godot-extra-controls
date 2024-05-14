@@ -150,6 +150,22 @@ func get_all() -> Dictionary:
 
 	return result
 
+func from_dict(dict: Dictionary):
+	for item in dict:
+		match typeof(dict[item]):
+			TYPE_FLOAT:
+				self.add_float(item, dict[item])
+			TYPE_BOOL:
+				self.add_bool(item, dict[item])
+			TYPE_INT:
+				self.add_int(item, dict[item])
+			TYPE_STRING:
+				self.add_string(item, dict[item])
+			TYPE_DICTIONARY:
+				self.add_group(item)
+				self.from_dict(dict[item])
+				self.end_group()
+
 ## Retrieve a value, whatever the type.
 func get_value(key : StringName) -> Variant:
 	return get_value_at(_keys[key])
